@@ -1,0 +1,26 @@
+{
+  "name": "weave-aggregator",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "the frontend of the permaweb",
+  "main": "./src/api.js",
+  "scripts": {
+    "start": "node src/api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentldotland/weave-aggregator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/decentldotland/weave-aggregator/issues"
+  },
+  "homepage": "https://github.com/decentldotland/weave-aggregator#readme",
+  "keywords": ["social-network", "web3", "aggregator", "arweave"],
+  "author": "charmful0x",
+  "license": "MIT",
+  "dependencies": {
+    "arweave": "^1.10.18",
+    "axios": "^0.24.0",
+    "base64url": "^3.0.1"
+  }
+}
