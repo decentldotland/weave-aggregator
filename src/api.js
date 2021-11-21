@@ -5,7 +5,7 @@ import { getPublicDrives } from "./ardrive/api.js";
 import { getKoii } from "./koii/api.js";
 import { getPermacast } from "./permacast/api.js";
 
-export async function getFeed(network) {
+export async function getWeaveAggregator(network) {
   switch (network) {
     case "mirror-xyz":
       return await getMirror();
