@@ -35,22 +35,31 @@ export async function getPermacast() {
 
   for (let factory of factories) {
     const metadata = await getFactoryMetadata(factory.factory);
-    const podcastsObjects = await metadata.filter(
+    const podcastsObjects = metadata.filter(
       (action) => action.function === "createPodcast"
     );
+    const episodes = metadata.filter(
+      (action) => action.function === "addEpisode"
+    );
 
-    for (let podcast of podcastsObjects) {
-      if (podcast.length > 1) {
-        for (pod of podcast) {
-          delete pod["function"];
-          pod["pid"] = factory.factory;
-          podcasts.push(pod);
-        }
+    if (podcastsObjects.length > 1) {
+      // transactions are sorted descending by timestamp
+      // which is proportionally reversible with the podcast.index
+      let index = podcastsObjects.length - 1; 
+      for (let pod of podcastsObjects) {
+        delete pod["function"];
+        pod["pid"] = factory.factory;
+        pod["episodesCount"] = episodes.filter(
+          (action) => action["index"] == index
+        ).length;
+        podcasts.push(pod);
+        index -= 1;
       }
-
-      delete podcast["function"];
-      podcast["pid"] = factory.factory;
-      podcasts.push(podcast);
+    } else {
+      delete podcastsObjects[0]["function"];
+      podcastsObjects[0]["pid"] = factory.factory;
+      podcastsObjects[0]["episodesCount"] = episodes.length;
+      podcasts.push(podcastsObjects[0]);
     }
   }
 
