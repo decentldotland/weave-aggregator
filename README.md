@@ -3,7 +3,7 @@
     <img src="./src/utils/img/logo25.png" height="124">
   </a>
   <h3 align="center"><code>@decentdotland/weave-aggregator</code></h3>
-  <p align="center">🐊 the allegator of the permaweb 🐊</p>
+  <p align="center">🐊 the alligator of the permaweb 🐊</p>
 </p>
 
 # Synopsis
@@ -34,7 +34,7 @@ The library will be under continious development mode to keep on track with the 
 ```js
 import { getPermacast } from "weave-aggregator"
 
-export async function podcasts() {
+async function podcasts() {
   const podcastsMetadata = await getPermacast();
 
   return podcastsMetadata
