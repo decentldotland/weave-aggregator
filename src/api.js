@@ -3,7 +3,7 @@ import { getArgora } from "./argora-xyz/api.js";
 import { getArweaveSaves } from "./arweave-saves/api.js";
 import { getPublicDrives } from "./ardrive/api.js";
 import { getKoii } from "./koii/api.js";
-import { getPermacast } from "./permacast/api.js";
+import { getPermacast, getTotalPermacastSize } from "./permacast/api.js";
 
 export async function getWeaveAggregator(network) {
   switch (network) {
@@ -24,5 +24,8 @@ export async function getWeaveAggregator(network) {
 
     case "permacast":
       return await getPermacast();
+      
+    case "permacast-size":
+      return await getTotalPermacastSize();
   }
 }
