@@ -29,7 +29,7 @@ async function getFactoryMetadata(factory_id) {
   return metadata;
 }
 
-async function getTotalPermacastSize() {
+export async function getTotalPermacastSize() {
   let totalSize = 0;
   const factories = await getPermacastFactories();
   const podcasts = [];
