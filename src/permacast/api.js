@@ -29,6 +29,30 @@ async function getFactoryMetadata(factory_id) {
   return metadata;
 }
 
+async function getTotalPermacastSize() {
+  let totalSize = 0;
+  const factories = await getPermacastFactories();
+  const podcasts = [];
+
+  for (let factory of factories) {
+    const metadata = await getFactoryMetadata(factory.factory);
+
+    const episodes = metadata.filter(
+      (action) => action.function === "addEpisode"
+    );
+
+    for (let episode of episodes) {
+      const txid = episode.audio;
+      const txObject = await arweave.transactions.get(txid);
+      const bytesTotalSize = txObject.data_size;
+      
+      totalSize += Number(bytesTotalSize);
+    }
+  }
+
+  return totalSize;
+}
+
 export async function getPermacast() {
   const factories = await getPermacastFactories();
   const podcasts = [];
