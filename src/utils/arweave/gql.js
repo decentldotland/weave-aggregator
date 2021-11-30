@@ -158,13 +158,16 @@ export async function gqlTemplate(query) {
 
   for (let element of res_arr) {
     const tx = element["node"];
+    const txExistence = transactionIds.find((txObj) => txObj.id === tx.id);
 
-    transactionIds.push({
-      id: tx.id,
-      owner: tx.owner.address,
-      timestamp: tx.block ? tx.block.timestamp : Date.now(),
-      tags: tx.tags ? tx.tags : [],
-    });
+    if (!txExistence) {
+      transactionIds.push({
+        id: tx.id,
+        owner: tx.owner.address,
+        timestamp: tx.block ? tx.block.timestamp : Date.now(),
+        tags: tx.tags ? tx.tags : [],
+      });
+    }
   }
 
   return transactionIds;
