@@ -7,7 +7,7 @@
 </p>
 
 # Synopsis
-The weave-allegator library aggregates data and feeds from the Permaweb, and make the access for it easier. The `weave-aggregator` aggregates especially social feeds from protocols that use Arweave as a storage solution.
+The weave-allegator library aggregates data and feeds from the Permaweb, and make the access for it easier. The `weave-aggregator` aggregates especially public feeds from protocols that use Arweave as a storage solution.
 
 The library will be under continious development mode to keep on track with the new & currently unsupported protocols that use Arweave. By aggregating data from different protocols, the `weave-aggregator` allows developers to create a frontend for the "timeline of the Permaweb".
 
@@ -25,6 +25,7 @@ The library will be under continious development mode to keep on track with the 
 | [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    | 
 | [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) | 
 | [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)|
+| [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
 
 
 # Usage Example
@@ -32,10 +33,10 @@ The library will be under continious development mode to keep on track with the 
 ## get permacast podcasts
 
 ```js
-import { getPermacast } from "weave-aggregator"
+import { getWeaveAggregator } from "weave-aggregator"
 
 async function podcasts() {
-  const podcastsMetadata = await getPermacast();
+  const podcastsMetadata = await getWeaveAggregator("permacast");
 
   return podcastsMetadata
 }
