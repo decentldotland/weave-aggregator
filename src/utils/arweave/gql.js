@@ -39,7 +39,7 @@ export const querySchema = {
       node {
         id
         owner { address }
-        tags { name value }
+        tags  { name value }
         block { timestamp }
       }
     }
@@ -62,7 +62,7 @@ export const querySchema = {
       node {
         id
         owner { address }
-        tags { name value }
+        tags  { name value }
         block { timestamp }
 
       }
@@ -88,7 +88,7 @@ export const querySchema = {
       node {
         id
         owner { address }
-        tags { name value }
+        tags  { name value }
         block { timestamp }
 
       }
@@ -112,7 +112,31 @@ export const querySchema = {
       node {
         id
         owner { address }
-        tags { name value }
+        tags  { name value }
+        block { timestamp }
+
+      }
+    }
+  }
+}`,
+    },
+  },
+  pianity: {
+    songs: {
+      query: `query {
+  transactions(
+    tags: [
+        { name: "Exchange", values: "Pianity"},
+        { name: "Content-Type", values: "audio/x-flac"},
+        { name: "Type", values: "Mint"}
+        ]
+    first: 100
+  ) {
+    edges {
+      node {
+        id
+        owner { address }
+        tags  { name value }
         block { timestamp }
 
       }
