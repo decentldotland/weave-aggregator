@@ -59,6 +59,9 @@ export async function getPermacast() {
 
   for (let factory of factories) {
     const metadata = await getFactoryMetadata(factory.factory);
+    // pas on empty factories
+    if (metadata.length < 1) {continue};
+    
     const podcastsObjects = metadata.filter(
       (action) => action.function === "createPodcast"
     );
