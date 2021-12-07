@@ -1,4 +1,4 @@
-import { gqlTemplate } from "../utils/arweave/gql.js";
+import { gqlTemplate, isParsable } from "../utils/arweave/gql.js";
 import { permacastDeepGraphs, factoryMetadataGraph } from "./gqlUtils.js";
 
 async function getPermacastFactories() {
@@ -23,7 +23,9 @@ async function getFactoryMetadata(factory_id) {
 
   for (let data of metadataObjects) {
     const inputTag = data.tags.find((tag) => tag.name === "Input");
-    metadata.push(JSON.parse(inputTag.value));
+    if (isParsable(inputTag.value)) {
+      metadata.push(JSON.parse(inputTag.value));
+    }
   }
 
   return metadata;
@@ -53,6 +55,27 @@ export async function getTotalPermacastSize() {
   return totalSize;
 }
 
+export async function getEpisodesOf(podcast_id) {
+  try {
+    const metadata = await getFactoryMetadata(podcast_id);
+    const episodesObjects = metadata.filter(
+      (action) => action.function === "addEpisode"
+    );
+    const episodes = [];
+
+    for (let episode of episodesObjects) {
+      delete episode["function"];
+      delete episode["index"];
+      delete episode["type"];
+      episodes.push(episode);
+    }
+
+    return episodes;
+  } catch (error) {
+    console.log(`${error.name} : ${error.description}`);
+  }
+}
+
 export async function getPermacast() {
   const factories = await getPermacastFactories();
   const podcasts = [];
@@ -65,7 +88,7 @@ export async function getPermacast() {
     const podcastsObjects = metadata.filter(
       (action) => action.function === "createPodcast"
     );
-    const episodes = metadata.filter(
+    const episodesObjects = metadata.filter(
       (action) => action.function === "addEpisode"
     );
 
@@ -76,7 +99,7 @@ export async function getPermacast() {
       for (let pod of podcastsObjects) {
         delete pod["function"];
         pod["pid"] = factory.factory;
-        pod["episodesCount"] = episodes.filter(
+        pod["episodesCount"] = episodesObjects.filter(
           (action) => action["index"] == index
         ).length;
         podcasts.push(pod);
@@ -85,7 +108,7 @@ export async function getPermacast() {
     } else {
       delete podcastsObjects[0]["function"];
       podcastsObjects[0]["pid"] = factory.factory;
-      podcastsObjects[0]["episodesCount"] = episodes.length;
+      podcastsObjects[0]["episodesCount"] = episodesObjects.length;
       podcasts.push(podcastsObjects[0]);
     }
   }
