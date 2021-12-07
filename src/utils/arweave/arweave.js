@@ -17,3 +17,12 @@ export function _validateAddress(address) {
 		throw new InvalidArweaveAddress(`address: ${address} is not valid`)
 	}
 }
+
+export function isParsable(string) {
+  try {
+    JSON.parse(string);
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
