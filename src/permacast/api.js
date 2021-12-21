@@ -1,5 +1,6 @@
 import { gqlTemplate, isParsable } from "../utils/arweave/gql.js";
 import { permacastDeepGraphs, factoryMetadataGraph } from "./gqlUtils.js";
+import axios from "axios";
 
 async function getPermacastFactories() {
   const res = [];
@@ -32,24 +33,21 @@ async function getFactoryMetadata(factory_id) {
 }
 
 export async function getTotalPermacastSize() {
+  const response = await axios.get(
+    "https://permacast-cache.herokuapp.com/feeds/podcasts"
+  );
+  const podcasts = response.data.res;
   let totalSize = 0;
-  const factories = await getPermacastFactories();
-  const podcasts = [];
 
-  for (let factory of factories) {
-    const metadata = await getFactoryMetadata(factory.factory);
+  for (let podcast of podcasts) {
+    const episodes = podcast["episodes"];
 
-    const episodes = metadata.filter(
-      (action) => action.function === "addEpisode"
-    );
-
-    for (let episode of episodes) {
-      const txid = episode.audio;
-      const txObject = await arweave.transactions.get(txid);
-      const bytesTotalSize = txObject.data_size;
-      
-      totalSize += Number(bytesTotalSize);
+    if (episodes.length === 0) {
+      continue;
     }
+    const sizeArray = episodes.map((ep) => ep.audioTxByteSize);
+    const podcastSize = sizeArray.reduce((a, b) => a + b, 0);
+    totalSize += podcastSize;
   }
 
   return totalSize;
