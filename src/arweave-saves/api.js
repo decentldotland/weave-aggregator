@@ -7,12 +7,12 @@ export async function getArweaveSaves() {
     const saves = await gqlTemplate(querySchema.saves.blogs);
 
     for (let tx of saves) {
-
+      const tags = tx["tags"]
       savesArray.push({
         sid: tx.id,
         poster: tx.owner,
-        url: tx["tags"][2]["value"],
-        title:tx["tags"][3] ? tx["tags"][3]["value"] : "saved without title",
+        url: tags.find(tag => tag.name === "page:url")?.value,
+        title: tags.find(tag => tag.name === "page:title")?.value,
         timestamp: tx.timestamp
       });
     }
