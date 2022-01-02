@@ -7,7 +7,7 @@
 </p>
 
 # Synopsis
-The weave-allegator library aggregates data and feeds from the Permaweb, and make the access for it easier. The `weave-aggregator` aggregates especially public feeds from protocols that use Arweave as a storage solution.
+The weave-alligator library aggregates data and feeds from the Permaweb, and make the access for it easier. The `weave-aggregator` aggregates especially public feeds from protocols that use Arweave as a storage solution.
 
 The library will be under continious development mode to keep on track with the new & currently unsupported protocols that use Arweave. By aggregating data from different protocols, the `weave-aggregator` allows developers to create a frontend for the "timeline of the Permaweb".
 
