@@ -13,12 +13,14 @@ export async function getPublicDrives() {
         string: true,
       })
     );
-
+    
+    const driveId = drive["tags"].find((tag) => tag.name === "Drive-Id")?.value;
+    
     feed.push({
       metadata: drive.id,
       poster: drive.owner,
       name: driveData.name,
-      url: `https://app.ardrive.io/#/drives/${drive.tags[6]["value"]}`,
+      url: `https://app.ardrive.io/#/drives/${driveId}`,
       timestamp: drive.timestamp,
     });
   }
