@@ -6,7 +6,7 @@ export async function getKoii() {
     const nfts = await gqlTemplate(querySchema.koii.anft);
 
     for (let nft of nfts) {
-      const initState = JSON.parse(nft.tags[6]["value"]);
+      const initState = JSON.parse( nft["tags"].find((tag) => tag.name === "Init-State")?.value );
 
       feed.push({
         id: nft.id,
