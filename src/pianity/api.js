@@ -10,9 +10,9 @@ export async function getPianitySongs() {
         sid: tx.id,
         poster: tx.owner,
         url: tx.id,
-        title: tx["tags"].find((tag) => tag.name === "Title").value,
-        author: tx["tags"].find((tag) => tag.name === "Author").value,
-        thumnail: tx["tags"].find((tag) => tag.name === "Thumbnail").value,
+        title: tx["tags"].find((tag) => tag.name === "Title")?.value,
+        author: tx["tags"].find((tag) => tag.name === "Author")?.value,
+        thumnail: tx["tags"].find((tag) => tag.name === "Thumbnail")?.value,
         timestamp: tx.timestamp,
       });
     }
