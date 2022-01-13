@@ -1,4 +1,5 @@
-import { gqlTemplate, isParsable } from "../utils/arweave/gql.js";
+import { gqlTemplate } from "../utils/arweave/gql.js";
+import { isParsable } from "../utils/arweave/arweave.js";
 import { permacastDeepGraphs, factoryMetadataGraph } from "./gqlUtils.js";
 import axios from "axios";
 
@@ -82,7 +83,7 @@ export async function getPermacast() {
     const metadata = await getFactoryMetadata(factory.factory);
     // pas on empty factories
     if (metadata.length < 1) {continue};
-    
+
     const podcastsObjects = metadata.filter(
       (action) => action.function === "createPodcast"
     );
@@ -93,7 +94,7 @@ export async function getPermacast() {
     if (podcastsObjects.length > 1) {
       // transactions are sorted descending by timestamp
       // which is proportionally reversible with the podcast.index
-      let index = podcastsObjects.length - 1; 
+      let index = podcastsObjects.length - 1;
       for (let pod of podcastsObjects) {
         delete pod["function"];
         pod["pid"] = factory.factory;
