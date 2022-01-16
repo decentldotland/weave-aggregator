@@ -1,5 +1,5 @@
 import { gqlTemplate } from "../utils/arweave/gql.js";
-import { isParsable } from "../utils/arweave/arweave.js";
+import { isParsable, arweave } from "../utils/arweave/arweave.js";
 import { permacastDeepGraphs, factoryMetadataGraph } from "./gqlUtils.js";
 import axios from "axios";
 
