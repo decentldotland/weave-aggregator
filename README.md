@@ -18,12 +18,12 @@ The library will be under continious development mode to keep on track with the 
 # Current Supported Protocols
 
 | protocol name |   directory   |
-| :-----------: |:-------------:| 
-| [ArweaveSaves](https://github.com/xylophonez/arweave-saves)  | [arweave-saves](./src/arweave-saves)| 
-| [Koii Network](https://koi.rocks)             | [koii](./src/koii)        | 
+| :-----------: |:-------------:|
+| [ArweaveSaves](https://github.com/xylophonez/arweave-saves)  | [arweave-saves](./src/arweave-saves)|
+| [Koii Network](https://koi.rocks)             | [koii](./src/koii)        |
 | [ardrive.io](https://ardrive.io)             |[ardrive](./src/ardrive)     |
-| [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    | 
-| [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) | 
+| [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    |
+| [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) |
 | [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)|
 | [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
 
@@ -42,6 +42,17 @@ async function podcasts() {
 }
 
 ```
+
+> For ReactJS usage:
+>
+> add an extra `default` between `Arweave` and `init` in `utils/arweave/arweave.js`
+>
+> ```js
+> export const arweave = Arweave.default.init({
+>  host: "arweave.net",
+>  ...
+> });
+> ```
 
 # License
 This projects is licensed under the MIT license
