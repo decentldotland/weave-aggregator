@@ -24,7 +24,7 @@ const gqlQuery = {
   },
 };
 
-export async function getUkRuPdf() {
+export async function getUaRuPdf() {
   try {
     const feed = [];
 
