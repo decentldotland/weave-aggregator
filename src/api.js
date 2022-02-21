@@ -4,8 +4,8 @@ import { getArweaveSaves } from "./arweave-saves/api.js";
 import { getPublicDrives } from "./ardrive/api.js";
 import { getKoii } from "./koii/api.js";
 import { getPianitySongs } from "./pianity/api.js";
-import { getUkRuPdf } from "./politics-archive/russo-ukrainian-conflict/pdf-api.js";
-import { getUkRuTweets } from "./politics-archive/russo-ukrainian-conflict/tweets-api.js";
+import { getUaRuPdf } from "./politics-archive/russo-ukrainian-conflict/pdf-api.js";
+import { getUaRuTweets } from "./politics-archive/russo-ukrainian-conflict/tweets-api.js";
 import {
   getPermacast,
   getTotalPermacastSize,
@@ -38,10 +38,10 @@ export async function getWeaveAggregator(network) {
     case "pianity":
       return await getPianitySongs();
 
-    case "ukru-pdf":
+    case "uaru-pdf":
       return await getUkRuPdf();
 
-    case "ukru-tweets":
+    case "uaru-tweets":
       return await getUkRuTweets();
   }
 }
