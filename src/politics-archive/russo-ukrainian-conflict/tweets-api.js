@@ -25,7 +25,7 @@ export const gqlQuery = {
   },
 };
 
-export async function getUkRuTweets() {
+export async function getUaRuTweets() {
   try {
     const feed = [];
 
