@@ -12,7 +12,7 @@ import {
   getEpisodesOf,
 } from "./permacast/api.js";
 
-export async function getWeaveAggregator(network) {
+export async function getWeaveAggregator(network, option) {
   switch (network) {
     case "mirror-xyz":
       return await getMirror();
@@ -21,13 +21,13 @@ export async function getWeaveAggregator(network) {
       return await getArgora();
 
     case "arweave-saves":
-      return await getArweaveSaves();
+      return await getArweaveSaves(option);
 
     case "ardrive":
-      return await getPublicDrives();
+      return await getPublicDrives(option);
 
     case "koii":
-      return await getKoii();
+      return await getKoii(option);
 
     case "permacast":
       return await getPermacast();
