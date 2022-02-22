@@ -1,10 +1,18 @@
 import { querySchema, gqlTemplate } from "../utils/arweave/gql.js";
+import { ardriveDrivesPer } from "../address/gql.js";
 import { arweave } from "../utils/arweave/arweave.js";
 
-export async function getPublicDrives() {
+export async function getPublicDrives(address) {
   const feed = [];
 
-  const drives = await gqlTemplate(querySchema.ardrive.drives);
+  let drives;
+
+  if (address) {
+    const query = ardriveDrivesPer(address);
+    drives = await gqlTemplate(query);
+  } else {
+    drives = await gqlTemplate(querySchema.ardrive.drives);
+  }
 
   for (let drive of drives) {
     const driveData = JSON.parse(
@@ -13,9 +21,9 @@ export async function getPublicDrives() {
         string: true,
       })
     );
-    
+
     const driveId = drive["tags"].find((tag) => tag.name === "Drive-Id")?.value;
-    
+
     feed.push({
       metadata: drive.id,
       poster: drive.owner,
