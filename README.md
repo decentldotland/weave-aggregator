@@ -6,16 +6,16 @@
   <p align="center">🐊 the alligator of the permaweb 🐊</p>
 </p>
 
-# Synopsis
+## Synopsis
 The weave-alligator library aggregates data and feeds from the Permaweb, and make the access for it easier. The `weave-aggregator` aggregates especially public feeds from protocols that use Arweave as a storage solution.
 
 The library will be under continious development mode to keep on track with the new & currently unsupported protocols that use Arweave. By aggregating data from different protocols, the `weave-aggregator` allows developers to create a frontend for the "timeline of the Permaweb".
 
-# Install
+## Install
 
 `npm install weave-aggregator `
 
-# Current Supported Protocols
+### Current Supported Protocols
 
 | protocol name |   directory   |
 | :-----------: |:-------------:|
@@ -28,20 +28,36 @@ The library will be under continious development mode to keep on track with the 
 | [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
 
 
-# Usage Example
+## Usage Example
 
-## get permacast podcasts
+### get permacast podcasts
 
 ```js
-import { getWeaveAggregator } from "weave-aggregator"
+import { getWeaveAggregator } from "weave-aggregator";
 
 async function podcasts() {
   const podcastsMetadata = await getWeaveAggregator("permacast");
 
-  return podcastsMetadata
+  return podcastsMetadata;
 }
 
 ```
+
+### get Koii collectibles
+
+```js
+import { getWeaveAggregator } from "weave-aggregator";
+
+const address = "...";
+
+async function nftsOf(address) {
+  const collectibles = await getWeaveAggregator("koii", address);
+
+  return collectibles;
+
+```
+omiting the `address` parameter returns the recent feed of the requested network. The networks that support per address filtering are: ArweaveSaves, Koii, and Ardrive.
+
 
 > For ReactJS usage:
 >
