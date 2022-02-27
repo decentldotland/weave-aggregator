@@ -6,6 +6,8 @@ import { getKoii } from "./koii/api.js";
 import { getPianitySongs } from "./pianity/api.js";
 import { getUaRuPdf } from "./politics-archive/russo-ukrainian-conflict/pdf-api.js";
 import { getUaRuTweets } from "./politics-archive/russo-ukrainian-conflict/tweets-api.js";
+import { getUaRuReddit } from "./politics-archive/russo-ukrainian-conflict/reddit-api.js";
+import { getUaRuArticles } from "./politics-archive/russo-ukrainian-conflict/articles-api.js";
 import {
   getPermacast,
   getTotalPermacastSize,
@@ -43,5 +45,11 @@ export async function getWeaveAggregator(network, option) {
 
     case "uaru-tweets":
       return await getUkRuTweets();
+ 
+    case "uaru-reddit":
+      return await getUaRuReddit();
+
+    case "uaru-articles":
+      return await getUaRuArticles();
   }
 }
