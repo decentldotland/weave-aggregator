@@ -61,14 +61,7 @@ omiting the `address` parameter returns the recent feed of the requested network
 
 > For ReactJS usage:
 >
-> add an extra `default` between `Arweave` and `init` in `utils/arweave/arweave.js`
->
-> ```js
-> export const arweave = Arweave.default.init({
->  host: "arweave.net",
->  ...
-> });
-> ```
+> Modifying `utils/arweave/arweave.js` no longer required for ReactJS.
 
 # License
 This projects is licensed under the MIT license

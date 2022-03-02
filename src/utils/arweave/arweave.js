@@ -1,13 +1,16 @@
 import { InvalidArweaveAddress } from "../errors/invalidAddress.js";
 import Arweave from "arweave";
 
-export const arweave = Arweave.init({
+const arweaveConfigs = {
   host: "arweave.net",
   port: 443,
   protocol: "https",
   timeout: 20000,
   logging: false,
-});
+}
+
+export const arweave = (typeof window !== 'undefined') ? 
+  Arweave.default.init(arweaveConfigs) : Arweave.init(arweaveConfigs);
 
 
 export function _validateAddress(address) {
