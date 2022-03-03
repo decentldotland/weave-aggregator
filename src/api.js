@@ -44,7 +44,7 @@ export async function getWeaveAggregator(network, option) {
       return await getUkRuPdf();
 
     case "uaru-tweets":
-      return await getUkRuTweets();
+      return await getUaRuTweets();
  
     case "uaru-reddit":
       return await getUaRuReddit();
