@@ -1,7 +1,19 @@
 import { gqlTemplate } from "../utils/arweave/gql.js";
-import { isParsable, arweave } from "../utils/arweave/arweave.js";
+import { arweave, isParsable } from "../utils/arweave/arweave.js";
 import { permacastDeepGraphs, factoryMetadataGraph } from "./gqlUtils.js";
 import axios from "axios";
+
+async function getMaskedContent() {
+  try {
+    const MASKED_URL =
+      "https://raw.githubusercontent.com/Parallel-news/permacast-cache/main/src/utils/constants/masked.json";
+    const res = (await axios.get(MASKED_URL))?.data;
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function getPermacastFactories() {
   const res = [];
@@ -26,7 +38,10 @@ async function getFactoryMetadata(factory_id) {
   for (let data of metadataObjects) {
     const inputTag = data.tags.find((tag) => tag.name === "Input");
     if (isParsable(inputTag.value)) {
-      metadata.push(JSON.parse(inputTag.value));
+      const inputTagData = JSON.parse(inputTag.value);
+      inputTagData.txid = data.id;
+
+      metadata.push(inputTagData);
     }
   }
 
@@ -56,6 +71,7 @@ export async function getTotalPermacastSize() {
 
 export async function getEpisodesOf(podcast_id) {
   try {
+    const maskedEids = (await getMaskedContent()).episodes;
     const metadata = await getFactoryMetadata(podcast_id);
     const episodesObjects = metadata.filter(
       (action) => action.function === "addEpisode"
@@ -69,21 +85,23 @@ export async function getEpisodesOf(podcast_id) {
       episodes.push(episode);
     }
 
-    return episodes;
+    return episodes.filter((episode) => !maskedEids.includes(episode.txid));
   } catch (error) {
     console.log(`${error.name} : ${error.description}`);
   }
 }
 
 export async function getPermacast() {
+  const maskedPids = (await getMaskedContent()).podcasts;
   const factories = await getPermacastFactories();
   const podcasts = [];
 
   for (let factory of factories) {
     const metadata = await getFactoryMetadata(factory.factory);
-    // pas on empty factories
-    if (metadata.length < 1) {continue};
-
+    // pass on empty factories
+    if (metadata.length < 1) {
+      continue;
+    }
     const podcastsObjects = metadata.filter(
       (action) => action.function === "createPodcast"
     );
@@ -93,11 +111,12 @@ export async function getPermacast() {
 
     if (podcastsObjects.length > 1) {
       // transactions are sorted descending by timestamp
-      // which is proportionally reversible with the podcast.index
+      // which is proportionally opposite with the podcast.index
       let index = podcastsObjects.length - 1;
       for (let pod of podcastsObjects) {
         delete pod["function"];
-        pod["pid"] = factory.factory;
+        pod["factory_id"] = factory.factory;
+        pod["pid"] = pod.txid;
         pod["episodesCount"] = episodesObjects.filter(
           (action) => action["index"] == index
         ).length;
@@ -112,5 +131,5 @@ export async function getPermacast() {
     }
   }
 
-  return podcasts;
+  return podcasts.filter((podcast) => !maskedPids.includes(podcast.pid));
 }
