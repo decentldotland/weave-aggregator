@@ -13,6 +13,7 @@ export async function getPianitySongs() {
         title: tx["tags"].find((tag) => tag.name === "Title")?.value,
         author: tx["tags"].find((tag) => tag.name === "Author")?.value,
         thumnail: tx["tags"].find((tag) => tag.name === "Thumbnail")?.value,
+        edition: tx["tags"].find((tag) => tag.name === "Editions")?.value,
         timestamp: tx.timestamp,
       });
     }
