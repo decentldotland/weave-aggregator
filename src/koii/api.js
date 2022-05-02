@@ -23,6 +23,7 @@ export async function getKoii(address) {
         timestamp: nft.timestamp,
         title: initState.title,
         description: initState.description,
+        ticker: initState?.ticker
       });
     }
 
