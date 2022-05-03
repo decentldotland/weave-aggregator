@@ -13,6 +13,7 @@ import {
   getTotalPermacastSize,
   getEpisodesOf,
 } from "./permacast/api.js";
+import { getLensFeed } from "./lens-protocol/api.js";
 
 export async function getWeaveAggregator(network, option) {
   switch (network) {
@@ -33,10 +34,13 @@ export async function getWeaveAggregator(network, option) {
 
     case "permacast":
       return await getPermacast();
-      
+
     case "permacast-size":
       return await getTotalPermacastSize();
-      
+
+    case "permacast-episode":
+      return await getEpisodesOf(option);
+
     case "pianity":
       return await getPianitySongs();
 
@@ -45,11 +49,14 @@ export async function getWeaveAggregator(network, option) {
 
     case "uaru-tweets":
       return await getUaRuTweets();
- 
+
     case "uaru-reddit":
       return await getUaRuReddit();
 
     case "uaru-articles":
       return await getUaRuArticles();
+
+    case "lens":
+      return await getLensFeed();
   }
 }
