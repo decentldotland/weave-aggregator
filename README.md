@@ -26,7 +26,7 @@ The library will be under continious development mode to keep on track with the 
 | [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) |
 | [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)|
 | [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
-| [Lens Protocol](https://lens.dev) | [lens-protocol](./lens-protocol) |
+| [Lens Protocol](https://lens.dev) | [lens-protocol](./src/lens-protocol) |
 
 
 ## Usage Example
