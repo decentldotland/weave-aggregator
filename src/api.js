@@ -14,6 +14,7 @@ import {
   getEpisodesOf,
 } from "./permacast/api.js";
 import { getLensFeed } from "./lens-protocol/api.js";
+import { getArtByCity } from "./art-by-city/api.js";
 
 export async function getWeaveAggregator(network, option) {
   switch (network) {
@@ -58,5 +59,8 @@ export async function getWeaveAggregator(network, option) {
 
     case "lens":
       return await getLensFeed();
+
+    case "art-by-city":
+      return await getArtByCity();
   }
 }
