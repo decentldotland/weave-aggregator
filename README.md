@@ -27,6 +27,7 @@ The library will be under continious development mode to keep on track with the 
 | [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)|
 | [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
 | [Lens Protocol](https://lens.dev) | [lens-protocol](./src/lens-protocol) |
+| [Art By City](https://artby.city) | [art-by-city](./src/art-by-city) |
 
 
 ## Usage Example
@@ -65,7 +66,7 @@ omiting the `address` parameter returns the recent feed of the requested network
 > Modifying `utils/arweave/arweave.js` no longer required for ReactJS.
 
 # License
-This projects is licensed under the MIT license
+This projects is licensed under the [MIT license](./LICENSE)
 
 
 
