@@ -152,7 +152,8 @@ export const querySchema = {
     tags: [
         { name: "App-Name", values: "ArtByCity"},
         { name: "Content-Type", values: "application/json"},
-        { name: "App-Version", values: "0.0.1-alpha"}
+        { name: "App-Version", values: "0.0.1-alpha"},
+        { name: "Category", values: "artwork"}
         ]
     first: 10
   ) {
