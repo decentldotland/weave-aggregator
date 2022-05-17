@@ -145,6 +145,30 @@ export const querySchema = {
 }`,
     },
   },
+  artbycity: {
+    art: {
+      query: `query {
+  transactions(
+    tags: [
+        { name: "App-Name", values: "ArtByCity"},
+        { name: "Content-Type", values: "application/json"},
+        { name: "App-Version", values: "0.0.1-alpha"}
+        ]
+    first: 10
+  ) {
+    edges {
+      node {
+        id
+        owner { address }
+        tags  { name value }
+        block { timestamp }
+
+      }
+    }
+  }
+}`,
+    },
+  },
 };
 
 export async function gqlTemplate(query) {
