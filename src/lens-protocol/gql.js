@@ -2,12 +2,11 @@ import axios from "axios";
 const APIURL = "https://api-mumbai.lens.dev/";
 
 const q = {
-  query: `
-query ExplorePublications {
+  query: `query ExplorePublications {
   explorePublications(request: {
-    sortCriteria: LATEST,
-    publicationTypes: [POST],
-    limit: 50
+    sortCriteria: TOP_COMMENTED,
+    publicationTypes: [POST, COMMENT, MIRROR],
+    limit: 10
   }) {
     items {
       __typename 
@@ -40,9 +39,6 @@ fragment ProfileFields on Profile {
   id
   name
   bio
-  location
-  website
-  twitter
   attributes {
     displayType
     traitType
@@ -91,7 +87,7 @@ fragment ProfileFields on Profile {
     }
   }
   ownedBy
-  depatcher {
+  dispatcher {
     address
   }
   stats {
@@ -116,6 +112,12 @@ fragment ProfileFields on Profile {
         value
       }
       recipient
+    }
+    ... on ProfileFollowModuleSettings {
+     type
+    }
+    ... on RevertFollowModuleSettings {
+     type
     }
   }
 }
@@ -334,10 +336,9 @@ export async function lensFeed() {
     });
 
     const res = response.data.data.explorePublications.items;
-    
+
     return res;
   } catch (error) {
     console.log(error);
   }
 }
-
