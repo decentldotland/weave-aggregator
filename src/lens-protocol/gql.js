@@ -4,9 +4,9 @@ const APIURL = "https://api-mumbai.lens.dev/";
 const q = {
   query: `query ExplorePublications {
   explorePublications(request: {
-    sortCriteria: TOP_COMMENTED,
-    publicationTypes: [POST, COMMENT, MIRROR],
-    limit: 10
+    sortCriteria: LATEST,
+    publicationTypes: [POST],
+    limit: 50
   }) {
     items {
       __typename 
