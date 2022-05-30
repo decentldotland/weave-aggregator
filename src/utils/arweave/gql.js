@@ -54,7 +54,9 @@ export const querySchema = {
       query: `query {
   transactions(
     tags: [
-        { name: "User-Agent", values: "ArweaveChrome/2.3.1"},
+        { name: "User-Agent", values: "ArConnect/0.4.2"},
+        { name: "App-Name", values: "ArDrive-Web"},
+        { name: "App-Version", values: "0.1.0"}
         ]
     first: 100
   ) {
@@ -102,11 +104,11 @@ export const querySchema = {
       query: `query {
   transactions(
     tags: [
-        { name: "Network", values: ["Koi", "Koii"]},
+        { name: "Network", values: "Koii"},
         { name: "Content-Type", values: ["image/png", "image/jpeg"]},
         { name: "Contract-Src", values: ["I8xgq3361qpR8_DvqcGpkCYAUTMktyAgvkm6kGhJzEQ", "r_ibeOTHJW8McJvivPJjHxjMwkYfAKRjs-LjAeaBcLc", "14l2t0DtenMRKPasR6Xi3pmQm3rqopD4cUr6Q5oD8lc"]}
         ]
-    first: 100
+    first: 25
   ) {
     edges {
       node {
@@ -127,10 +129,10 @@ export const querySchema = {
   transactions(
     tags: [
         { name: "Exchange", values: "Pianity"},
-        { name: "Content-Type", values: "audio/x-flac"},
-        { name: "Type", values: "Mint"}
+        { name: "Type", values: "Mint"},
+        { name: "Contract", values: "XIutiOKujGI21_ywULlBeyy-L9d8goHxt0ZyUayGaDg"}
         ]
-    first: 100
+    first: 25
   ) {
     edges {
       node {
@@ -173,7 +175,8 @@ export const querySchema = {
 };
 
 export async function gqlTemplate(query) {
-  const response = await axios.post("https://arweave.dev/graphql", query, {
+
+  const response = await axios.post(`https://arweave.net/graphql`, query, {
     headers: { "Content-Type": "application/json" },
   });
 
