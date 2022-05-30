@@ -19,7 +19,7 @@ The library will be under continious development mode to keep on track with the 
 
 | protocol name |   directory   |
 | :-----------: |:-------------:|
-| [ArweaveSaves](https://github.com/xylophonez/arweave-saves)  | [arweave-saves](./src/arweave-saves)|
+| [ArweaveSaves](https://arconnect)  | [arweave-saves](./src/arweave-saves)|
 | [Koii Network](https://koi.rocks)             | [koii](./src/koii)        |
 | [ardrive.io](https://ardrive.io)             |[ardrive](./src/ardrive)     |
 | [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    |
