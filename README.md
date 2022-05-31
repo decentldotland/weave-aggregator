@@ -17,17 +17,17 @@ The library will be under continious development mode to keep on track with the 
 
 ### Current Supported Protocols
 
-| protocol name |   directory   |
-| :-----------: |:-------------:|
-| [ArweaveSaves](https://arconnect)  | [arweave-saves](./src/arweave-saves)|
-| [Koii Network](https://koi.rocks)             | [koii](./src/koii)        |
-| [ardrive.io](https://ardrive.io)             |[ardrive](./src/ardrive)     |
-| [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    |
-| [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) |
-| [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)|
-| [Pianity](https://pianity.com)             | [pianity](./src/pianity)|
-| [Lens Protocol](https://lens.dev) | [lens-protocol](./src/lens-protocol) |
-| [Art By City](https://artby.city) | [art-by-city](./src/art-by-city) |
+| protocol name |   directory   | API ID | 
+| :-----------: |:-------------:| :-------------: |
+| [ArweaveSaves](https://arconnect)  | [arweave-saves](./src/arweave-saves)| `arweave-saves` |
+| [Koii Network](https://koi.rocks)             | [koii](./src/koii)        | `koii` |
+| [ardrive.io](https://ardrive.io)             |[ardrive](./src/ardrive)     | `ardrive` |
+| [permacast.net](https://permacast.net)             | [permacast](./src/permacast)    | `permacast` |
+| [argora.xyz](https://argora.xyz)             | [argora-xyz](./src/argora-xyz) | `argora-xyz` |
+| [mirror.xyz](https://mirror.xyz)             | [mirror-xyz](./src/mirror-xyz)| `mirror-xyz` |
+| [Pianity](https://pianity.com)             | [pianity](./src/pianity)| `pianity` |
+| [Lens Protocol](https://lens.dev) | [lens-protocol](./src/lens-protocol) | `lens` |
+| [Art By City](https://artby.city) | [art-by-city](./src/art-by-city) | `art-by-city` |
 
 
 ## Usage Example
