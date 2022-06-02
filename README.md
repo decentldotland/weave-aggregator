@@ -28,6 +28,7 @@ The library will be under continious development mode to keep on track with the 
 | [Pianity](https://pianity.com)             | [pianity](./src/pianity)| `pianity` |
 | [Lens Protocol](https://lens.dev) | [lens-protocol](./src/lens-protocol) | `lens` |
 | [Art By City](https://artby.city) | [art-by-city](./src/art-by-city) | `art-by-city` |
+| [ANS](https://ar.page) | [safe-cache-api](./src/ans) | `ans-cache` |
 
 
 ## Usage Example
