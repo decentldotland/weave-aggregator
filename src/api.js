@@ -15,6 +15,7 @@ import {
 } from "./permacast/api.js";
 import { getLensFeed } from "./lens-protocol/api.js";
 import { getArtByCity } from "./art-by-city/api.js";
+import { getAnsSafeCache } from "./ans/safe-cache-api.js";
 
 export async function getWeaveAggregator(network, option) {
   switch (network) {
@@ -62,5 +63,8 @@ export async function getWeaveAggregator(network, option) {
 
     case "art-by-city":
       return await getArtByCity();
+
+    case "ans-cache":
+      return await getAnsSafeCache();
   }
 }
