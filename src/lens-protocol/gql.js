@@ -1,5 +1,5 @@
 import axios from "axios";
-const APIURL = "https://api-mumbai.lens.dev/";
+const APIURL = "https://api.lens.dev/";
 
 const q = {
   query: `query ExplorePublications {
