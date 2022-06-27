@@ -158,7 +158,7 @@ export const querySchema = {
         { name: "App-Version", values: "0.0.1-alpha"},
         { name: "Category", values: "artwork"}
         ]
-    first: 10
+    first: 50
   ) {
     edges {
       node {
