@@ -9,12 +9,13 @@ export const querySchema = {
         { name: "App-Name", values: "MirrorXYZ"},
         { name: "Content-Type", values: "application/json"}
         ]
-    first: 30
+    first: 100
   ) {
     edges {
       node {
         id
         owner { address }
+        tags  { name value }
         block { timestamp }
       }
     }
