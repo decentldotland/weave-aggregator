@@ -15,7 +15,7 @@ export const querySchema = {
       node {
         id
         owner { address }
-        tags  { name value }
+        tags { name value }
         block { timestamp }
       }
     }
@@ -157,6 +157,31 @@ export const querySchema = {
         { name: "Content-Type", values: "application/json"},
         { name: "App-Version", values: "0.0.1-alpha"},
         { name: "Category", values: "artwork"}
+        ]
+    first: 50
+  ) {
+    edges {
+      node {
+        id
+        owner { address }
+        tags  { name value }
+        block { timestamp }
+
+      }
+    }
+  }
+}`,
+    },
+  },
+  metaweave: {
+    permatweets: {
+      query: `query {
+  transactions(
+    tags: [
+        { name: "Protocol-Name", values: "argora"},
+        { name: "Content-Type", values: "application/json"},
+        { name: "Protocol-Version", values: "1.2-beta"},
+        { name: "reply-to", values: "permatweet"}
         ]
     first: 50
   ) {
