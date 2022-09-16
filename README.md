@@ -30,6 +30,7 @@ The library will be under continious development mode to keep on track with the 
 | [Art By City](https://artby.city) | [art-by-city](./src/art-by-city) | `art-by-city` |
 | [ANS](https://ar.page) | [safe-cache-api](./src/ans) | `ans-cache` |
 | [Metaweave Permatweets](https://metaweave.xyz) | [metaweave-xyz](./src/metaweave-xyz) | `metaweave-permatweets` |
+| [PermaPages IMG](https://img.arweave.dev/) | [permapages/img](./src/permapages/img) | `permapages-img` |
 
 
 ## Usage Example
