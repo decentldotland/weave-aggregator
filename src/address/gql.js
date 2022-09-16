@@ -73,3 +73,29 @@ export function ardriveDrivesPer(address) {
 }`,
   };
 }
+
+export function permaPagesImg(address) {
+  return {
+    query: `query {
+  transactions(
+  owners: ["${address}"]
+    tags: [
+        { name: "App-Name", values: "SmartWeaveContract"},
+        { name: "Contract-Src", values: "BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q"},
+        { name: "Type", values: "image"}
+        ]
+    first: 100
+  ) {
+    edges {
+      node {
+        id
+        owner { address }
+        tags { name value }
+        block { timestamp }
+
+      }
+    }
+  }
+}`,
+  };
+}
