@@ -198,6 +198,30 @@ export const querySchema = {
 }`,
     },
   },
+  permapages: {
+    img: {
+      query: `query {
+  transactions(
+    tags: [
+        { name: "App-Name", values: "SmartWeaveContract"},
+        { name: "Contract-Src", values: "BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q"},
+        { name: "Type", values: "image"}
+        ]
+    first: 50
+  ) {
+    edges {
+      node {
+        id
+        owner { address }
+        tags  { name value }
+        block { timestamp }
+
+      }
+    }
+  }
+}`,
+    },
+  },
 };
 
 export async function gqlTemplate(query) {
