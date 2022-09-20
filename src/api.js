@@ -18,6 +18,7 @@ import { getArtByCity } from "./art-by-city/api.js";
 import { getAnsSafeCache } from "./ans/safe-cache-api.js";
 import { getPermaTweets } from "./metaweave-xyz/api.js";
 import { getPermaPagesImg } from "./permapages/img/api.js";
+import { getStamps } from "./permapages/stamps/api.js";
 
 export async function getWeaveAggregator(network, option) {
   switch (network) {
@@ -74,5 +75,8 @@ export async function getWeaveAggregator(network, option) {
 
     case "permapages-img":
       return await getPermaPagesImg(option);
+
+    case "permapages-stamps":
+      return await getStamps(option);
   }
 }
