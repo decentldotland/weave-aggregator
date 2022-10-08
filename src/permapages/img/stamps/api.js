@@ -1,5 +1,5 @@
 import { makeQueries } from "./gql.js";
-//import uniqBy from 'lodash.uniqby'
+import uniqBy from 'lodash.uniqby'
 
 export async function getStamps(address) {
   try {
@@ -22,7 +22,7 @@ export async function getStamps(address) {
     }
 
     if (address) {
-      return feed.filter((stamp) => stamp.stamper === address);
+      return uniqBy(feed.filter((stamp) => stamp.stamper === address), n => n.stampedAsset);
     }
 
 
