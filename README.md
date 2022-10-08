@@ -65,6 +65,22 @@ async function nftsOf(address) {
 omiting the `address` parameter returns the recent feed of the requested network. The networks that support per address filtering are: ArweaveSaves, Koii, and Ardrive.
 
 
+### get Stamps
+
+``` js
+import { getWeaveAggregator } from "weave-aggregator";
+
+const address = "...";
+
+async function stamps(address) {
+  const stamps = await getWeaveAggregator("permapages-stamps", address);
+
+  return stamps;
+}
+
+console.log(await stamps(address))
+```
+
 > For ReactJS usage:
 >
 > Modifying `utils/arweave/arweave.js` no longer required for ReactJS.

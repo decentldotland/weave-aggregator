@@ -15,12 +15,18 @@
     "url": "https://github.com/decentldotland/weave-aggregator/issues"
   },
   "homepage": "https://github.com/decentldotland/weave-aggregator#readme",
-  "keywords": ["social-network", "web3", "aggregator", "arweave"],
+  "keywords": [
+    "social-network",
+    "web3",
+    "aggregator",
+    "arweave"
+  ],
   "author": "charmful0x",
   "license": "MIT",
   "dependencies": {
     "arweave": "^1.10.18",
     "axios": "^0.24.0",
-    "base64url": "^3.0.1"
+    "base64url": "^3.0.1",
+    "lodash.uniqby": "^4.7.0"
   }
 }
