@@ -29,7 +29,10 @@ export async function getStamps(address) {
       );
 
       for (const tx of res) {
-        tx.stampedAssetType = await getStampedAssetType(tx.stampedAsset);
+        const tags = await getStampedAssetTags(tx.stampedAsset);
+        tx.stampedAssetType = tags.find((key) => key.name === "Type")?.value;
+        tx.title = tags.find((key) => key.name === "Title")?.value;
+        tx.description = tags.find((key) => key.name === "Description")?.value;
       }
 
       return res;
@@ -41,7 +44,7 @@ export async function getStamps(address) {
   }
 }
 
-async function getStampedAssetType(asset_id) {
+async function getStampedAssetTags(asset_id) {
   try {
     const query = `query {
     transactions(ids: ["${asset_id}"]) {
@@ -56,12 +59,8 @@ async function getStampedAssetType(asset_id) {
 
     const res = await axios.post("https://arweave.net/graphql", { query });
     const tags = res?.data?.data?.transactions?.edges?.[0]?.node?.tags;
-    if (tags) {
-      const type = tags.find((key) => key.name === "Type")?.value;
-      return type;
-    }
 
-    return undefined;
+    return tags;
   } catch (error) {
     console.log(error);
     return undefined;
