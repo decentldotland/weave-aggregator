@@ -1,13 +1,16 @@
 import axios from "axios";
 
-const stampsGraph = async (after) => {
+const STAMPS_CONTRACT_OLD = `aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA`;
+const STAMPS_CONTRACT_NEW = `jAE_V6oXkb0dohIOjReMhrTlgLW0X2j3rxIZ5zgbjXw`;
+
+const stampsGraph = async (after, STAMPS_CONTRACT) => {
   let query = "";
   if (after) {
     query = `query {
             transactions(
                 tags: [
                       { name: "App-Name", values: "SmartWeaveAction"},
-                      { name: "Contract", values: "aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA"}
+                      { name: "Contract", values: "${STAMPS_CONTRACT}"}
                       ],
                 first: 100,
                 after: "${after}"
@@ -28,7 +31,7 @@ const stampsGraph = async (after) => {
             transactions(
                 tags: [
                       { name: "App-Name", values: "SmartWeaveAction"},
-                      { name: "Contract", values: "aSMILD7cEJr93i7TAVzzMjtci_sGkXcWnqpDkG6UGcA"}
+                      { name: "Contract", values: "${STAMPS_CONTRACT}"}
                       ],
                 first: 100
             ) {
@@ -60,9 +63,9 @@ const stampsGraph = async (after) => {
   return await response.data;
 };
 
-export async function makeQueries() {
+export async function makeQuery(stamps_contract) {
   try {
-    const firstFetch = await stampsGraph();
+    const firstFetch = await stampsGraph(null, stamps_contract);
     const firstEdges = firstFetch?.data?.transactions?.edges || [];
     const results = [...firstEdges];
     const finalRes = [];
@@ -74,7 +77,7 @@ export async function makeQueries() {
         const lastCursor = results[getEdgesLength() - 1]?.cursor;
 
         if (lastCursor) {
-          const nextFetch = await stampsGraph(lastCursor);
+          const nextFetch = await stampsGraph(lastCursor, stamps_contract);
           const currentEdges = nextFetch?.data?.transactions?.edges || [];
           const currentEdgeLength = currentEdges.length || 0;
 
@@ -102,6 +105,17 @@ export async function makeQueries() {
     }
     return finalRes;
   } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function makeQueries() {
+  try {
+    const oldFeed = await makeQuery(STAMPS_CONTRACT_OLD);
+    const newFeed = await makeQuery(STAMPS_CONTRACT_NEW);
+
+    return oldFeed.concat(newFeed);
+  } catch(error) {
     console.log(error);
   }
 }
