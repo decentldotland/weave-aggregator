@@ -226,7 +226,7 @@ export const querySchema = {
 
 export async function gqlTemplate(query) {
 
-  const response = await axios.post(`https://arweave.net/graphql`, query, {
+  const response = await axios.post(`https://arweave-search.goldsky.com/graphql`, query, {
     headers: { "Content-Type": "application/json" },
   });
 
