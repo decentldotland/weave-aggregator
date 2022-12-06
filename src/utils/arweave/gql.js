@@ -240,8 +240,8 @@ export async function gqlTemplate(query) {
 
     if (!txExistence) {
       transactionIds.push({
-        id: tx.id,
-        owner: tx.owner.address,
+        id: tx?.id,
+        owner: tx?.owner?.address,
         timestamp: tx.block ? tx.block.timestamp : Date.now(),
         tags: tx.tags ? tx.tags : [],
       });
