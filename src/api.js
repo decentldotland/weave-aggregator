@@ -19,6 +19,7 @@ import { getAnsSafeCache } from "./ans/safe-cache-api.js";
 import { getPermaTweets } from "./metaweave-xyz/api.js";
 import { getPermaPagesImg } from "./permapages/img/api.js";
 import { getStamps } from "./permapages/stamps/api.js";
+import { arnsRecordOf } from "./arns/api.js";
 export async function getWeaveAggregator(network, option) {
   switch (network) {
     case "mirror-xyz":
@@ -77,5 +78,8 @@ export async function getWeaveAggregator(network, option) {
 
     case "permapages-stamps":
       return await getStamps(option);
+
+    case "arns":
+      return await arnsRecordOf(option); 
   }
 }
