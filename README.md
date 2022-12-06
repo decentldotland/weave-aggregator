@@ -30,6 +30,7 @@ The library will be under continious development mode to keep on track with the 
 | [Metaweave Permatweets](https://metaweave.xyz) | [metaweave-xyz](./src/metaweave-xyz) | `metaweave-permatweets` |
 | [PermaPages IMG](https://img.arweave.dev/) | [permapages/img](./src/permapages/img) | `permapages-img` |
 | [PermaPages Stamps](https://permapages.app/) | [permapages/stamps](./src/permapages/stamps) | `permapages-stamps` |
+| [ArNS](https://ar.io/arns/) | [arns](./src/arns) | `arns` |
 
 
 ## Usage Example
