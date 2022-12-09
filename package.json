@@ -1,6 +1,6 @@
 {
   "name": "weave-aggregator",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "type": "module",
   "description": "the frontend of the permaweb",
   "main": "./src/api.js",
