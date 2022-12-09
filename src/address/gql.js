@@ -99,3 +99,28 @@ export function permaPagesImg(address) {
 }`,
   };
 }
+
+export function arnsSourceCode(address) {
+  return {
+    query: `query {
+  transactions(
+  owners: ["${address}"]
+    tags: [
+        { name: "App-Name", values: "SmartWeaveContract"},
+        { name: "Contract-Src", values: ["PEI1efYrsX08HUwvc6y-h6TSpsNlo2r6_fWL2_GdwhY", "7hL0La2KMapdJI6yIGnb4f4IjvhlGQyXnqpWc0i0d_w", "cNr6JPVu3rEOwIbdnu3lVipz9pwY5Pps9mxHSW7Jdtk", "JIIB01pRbNK2-UyNxwQK-6eknrjENMTpTvQmB8ZDzQg"]},
+        { name: "SDK", values: "RedStone"},
+        { name: "Content-Type", values: "application/json"}
+        ]
+    first: 1
+  ) {
+    edges {
+      node {
+        id
+
+      }
+    }
+  }
+}`,
+  };
+}
+
