@@ -81,7 +81,7 @@ export function permaPagesImg(address) {
   owners: ["${address}"]
     tags: [
         { name: "App-Name", values: "SmartWeaveContract"},
-        { name: "Contract-Src", values: "BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q"},
+        { name: "Contract-Src", values: ["BzNLxND_nJEMfcLWShyhU4i9BnzEWaATo6FYFsfsO0Q", "x0ojRwrcHBmZP20Y4SY0mgusMRx-IYTjg5W8c3UFoNs"]},
         { name: "Type", values: "image"}
         ]
     first: 100
